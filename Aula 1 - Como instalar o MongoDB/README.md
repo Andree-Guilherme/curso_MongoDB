@@ -17,6 +17,7 @@
    3.  __Package__
 
 __Certifique-se de escolher a mesma versão da instalação gráfica para manter a compatibilidade__
+
 4.  Por fim clicamos em __Download__
 ---
 ### Instalando o MongoDB
@@ -28,7 +29,7 @@ __Certifique-se de escolher a mesma versão da instalação gráfica para manter
    1. **Completa** - _mais utilizada_
    2. __Customizada__
 5. Escolher a instalação completa
-6. Sera aberto a tela de configuração do serviço - __deve ser usado as seguintes opções:__
+6. Sera aberto a tela de configuração do serviço - _deve ser usado as seguintes opções:_
 - [X] __Install MongoD as a Service__
 - [X] __Run service as Network Service user__
 * __Service Name: {nome_do_serviço}__
@@ -40,6 +41,7 @@ __Certifique-se de escolher a mesma versão da instalação gráfica para manter
 9. Clique em __Next__
 10. Clique em __Install__ e aguarde o carregamento
 11. Clique em __Finish__ para concluir a instalação
+
 __Recomenda-se reiniciar o computador após o termino__
 ---
 ### Instalando Mongo Shell
@@ -49,4 +51,5 @@ __Recomenda-se reiniciar o computador após o termino__
 - [X] **Install just for you** - _desmarque essa opção_
 4. Clique em __Install__ e aguarde o carregamento
 5. Clique em __Finish__ para concluir a instalação
+
 __Recomenda-se reiniciar o computador após o termino__
