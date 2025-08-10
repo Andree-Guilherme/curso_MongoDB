@@ -39,10 +39,10 @@ __Importante:__ Ao se conectar ao banco de dados ele mostra
    2. `db.createCollection("{nome_da_collecion}")`
 
 * O primeiro comando trocara o banco de dados mesmo que ainda não esteja criado
-* Respeitando a regra do banco sempre temos que criar uma collection junto com o banco por isso não adianta apenas trocar o banco
+* Respeitando a regra do banco sempre temos que criar uma collection junto com o banco por isso não adianta apenas trocar o banco, temos que passar o segundo comando também
 
 4. Sera retornado uma mensagem de __ok__
-5. Banco de daos criado
+5. Banco de dados criado
 
 __O comando `use` também serve para alterar entre os bancos de dados já existentes__
 
