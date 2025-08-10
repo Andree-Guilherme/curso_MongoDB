@@ -16,7 +16,7 @@
    2.  __Plataform__
    3.  __Package__
 
-__Certifique-se de escolher a mesma versão da instalação gráfica para manter a compatibilidade__
+_Certifique-se de escolher a mesma versão da instalação gráfica para manter a compatibilidade_
 
 4.  Por fim clicamos em __Download__
 ---
@@ -43,6 +43,7 @@ __Certifique-se de escolher a mesma versão da instalação gráfica para manter
 11. Clique em __Finish__ para concluir a instalação
 
 __Recomenda-se reiniciar o computador após o termino__
+
 ---
 ### Instalando Mongo Shell
 1. Execute o instalador como administrador
