@@ -42,7 +42,8 @@ __Importante:__ Ao se conectar ao banco de dados ele mostra
 * Respeitando a regra do banco sempre temos que criar uma collection junto com o banco por isso não adianta apenas trocar o banco
 
 4. Sera retornado uma mensagem de __ok__
+5. Banco de daos criado
 
 __O comando `use` também serve para alterar entre os bancos de dados já existentes__
 
-_O mongo é case sensetive, ou seja, devemos digitar os comandos e bancos de forma correta_
+_O mongo é case sensitive, ou seja, devemos digitar os comandos e bancos de forma correta_
