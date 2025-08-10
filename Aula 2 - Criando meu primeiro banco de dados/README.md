@@ -28,17 +28,21 @@ _Em analogia ao banco de dados relacional uma collection seria uma tabela, mas n
 ---
 ### Criando o banco via Shell
 1. Abrimos o `CMD` e digitamos `mongosh` para se __conectar ao banco de dados__
-__Importante:__ _ao se conectar ao banco de dados ele mostra_
+
+__Importante:__ Ao se conectar ao banco de dados ele mostra
 * __O caminho em que esta se conectando__
 * __A versão do mongoDB__
 * __A versão do shell__
 2. Para __exibir os bancos de dados existentes__ digitamos o comando `show databases`
 3. Para __criar um novo banco__ de dados usamos o comando:
    1. `use{nome_do_banco}`
-* Então o banco de dados sera trocado para o desejado
-* Porém como a regra para criar um banco de dados é sempre ter uma collection devemos criar uma com o comando
    2. `db.createCollection("{nome_da_collecion}")`
+
+* O primeiro comando trocara o banco de dados mesmo que ainda não esteja criado
+* Respeitando a regra do banco sempre temos que criar uma collection junto com o banco por isso não adianta apenas trocar o banco
+
 4. Sera retornado uma mensagem de __ok__
 
-__O comando `use` também serve para alterar entre os bancos de dados__
+__O comando `use` também serve para alterar entre os bancos de dados já existentes__
+
 _O mongo é case sensetive, ou seja, devemos digitar os comandos e bancos de forma correta_
