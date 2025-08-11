@@ -8,7 +8,9 @@
    2.  __Plataform__
    3.  __Package__
 4.  Por fim clicamos em __Download__
+
 ---
+
 ### Download MongoDB Shell
 1. Acessamos o site [mongosh](https://www.mongodb.com/try/download/shell)
 2. Selecionamos os seguintes campos:
@@ -19,7 +21,9 @@
 _Certifique-se de escolher a mesma versão da instalação gráfica para manter a compatibilidade_
 
 4.  Por fim clicamos em __Download__
+
 ---
+
 ### Instalando o MongoDB
 1. Execute o instalador como administrador
 2. Clique em __Next__
@@ -45,6 +49,7 @@ _Certifique-se de escolher a mesma versão da instalação gráfica para manter 
 __Recomenda-se reiniciar o computador após o termino__
 
 ---
+
 ### Instalando Mongo Shell
 1. Execute o instalador como administrador
 2. Escolha o local de instalação

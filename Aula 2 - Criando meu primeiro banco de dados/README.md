@@ -9,7 +9,9 @@
    2. __Connect:__ Sempre vai ter que clicar em conectar, independente de já ter salvo ou não
    3. __Save & Connect:__ Não exige reconexão manual toda vez, porque você pode simplesmente reabrir a conexão salva e entrar direto
 5. Feito isso já estamos conectados no servidor local
+
 ---
+
 ### Criando o banco
 1. Ao se conectar, por padrão já vai vir criado 3 bancos de dados
    1. __admin__ - _Banco administrativo que armazena credenciais, roles e configurações de nível global_
@@ -25,7 +27,9 @@ __Por padrão na criação sempre tem que ter uma collection já criada__
 _Em analogia ao banco de dados relacional uma collection seria uma tabela, mas não é_
 
 4. Por fim clicar em __Create Database__
+
 ---
+
 ### Criando o banco via Shell
 1. Abrimos o `CMD` e digitamos `mongosh` para se __conectar ao banco de dados__
 
