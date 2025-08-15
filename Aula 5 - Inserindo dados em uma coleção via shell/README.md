@@ -9,25 +9,35 @@
 
 > _ou use a URI do seu cluster Atlas_
 
+<br>
+
 **2. Conecte ao MongoDB:**  
 `use <database>`
 
+<br>
+
 **Inserindo um registro:**  
-`db.<collection>.insertOne({`
-   `"<key>": <value>,`
-   `"<key>": <value> `
-`});`
+<pre><code>db.&lt;collection&gt;.insertOne({
+   "&lt;key&gt;": &lt;value&gt;,
+   "&lt;key&gt;": &lt;value&gt;
+});
+</code></pre>
 
 > _útil para inserir apenas um documento por vez_
 
+<br>
+
 **Inserindo vários registros:**  
-`db.<collection>.insertMany([`
-   `{"<nome_do_campo>": <valor>},`
-   `{"<nome_do_campo>": <valor>}`
-`])`
+<pre><code>db.&lt;collection&gt;.insertMany([
+   {"&lt;key&gt;": &lt;value&gt;},
+   {"&lt;key&gt;": &lt;value&gt;}
+])
+</code></pre>
+
 
 > _serve para inserir múltiplos documentos de uma vez (dentro de um array)_
 
 ---
+
 
 * No MongoDB Compass, é possível abrir o shell integrado em `> Open MongoDB shell` e executar os mesmos comandos
