@@ -1,53 +1,58 @@
-# Criando meu primeiro banco de dados
-
-### Conectando ao banco
-1. Para criar um banco de dados, primeiro devemos nos conectar a ele clicando em __Add new connection__
-2. Depois ira aparecer a tela de __New Connection__ onde definiremos a __URI (String de Conexão)__
-3. Dexaremos a URI padrão `mongodb://localhost:27017/`
-4. Salvar as informações
-   1. __Save:__ Salva as configurações ou dados atuais
-   2. __Connect:__ Sempre vai ter que clicar em conectar, independente de já ter salvo ou não
-   3. __Save & Connect:__ Não exige reconexão manual toda vez, porque você pode simplesmente reabrir a conexão salva e entrar direto
-5. Feito isso já estamos conectados no servidor local
+# 🗄️ Criando Meu Primeiro Banco de Dados
 
 ---
 
-### Criando o banco
-1. Ao se conectar, por padrão já vai vir criado 3 bancos de dados
-   1. __admin__ - _Banco administrativo que armazena credenciais, roles e configurações de nível global_
-   2. __config__ - _Usado pelo sharding para guardar metadados e informações de configuração dos shards_
-   3. __local__ - _Guarda dados locais do nó, como informações de replicação; não é replicado entre servidores_
-2. Para criar um novo banco de dados basta clicar no botão __Create database__
-3. Ao clicar em __Create database__ será aberto uma tela indicando para preencher
-* __Database Name__
-* __Collection Name__
+## 🔌 Conectando ao banco
 
-__Por padrão na criação sempre tem que ter uma collection já criada__
-
-_Em analogia ao banco de dados relacional uma collection seria uma tabela, mas não é_
-
-4. Por fim clicar em __Create Database__
+1. Para criar um banco de dados, primeiro devemos nos conectar a ele clicando em **Add new connection**.
+2. Depois irá aparecer a tela de **New Connection** onde definiremos a **URI (String de Conexão)**.
+3. Deixe a URI padrão:  
+   <pre><code>mongodb://localhost:27017/</code></pre>
+4. Salvar as informações:
+   - **Save:** Salva as configurações ou dados atuais.
+   - **Connect:** Sempre será necessário clicar para conectar, mesmo após salvar.
+   - **Save & Connect:** Permite reconexão automática sem precisar clicar manualmente toda vez.
+5. Feito isso, já estamos conectados ao servidor local.
 
 ---
 
-### Criando o banco via Shell
-1. Abrimos o `CMD` e digitamos `mongosh` para se __conectar ao banco de dados__
+## 🏗️ Criando o banco de dados
 
-__Importante:__ Ao se conectar ao banco de dados ele mostra
-* __O caminho em que esta se conectando__
-* __A versão do mongoDB__
-* __A versão do shell__
-2. Para __exibir os bancos de dados existentes__ digitamos o comando `show databases`
-3. Para __criar um novo banco__ de dados usamos o comando:
-   1. `use{nome_do_banco}`
-   2. `db.createCollection("{nome_da_collecion}")`
+1. Ao se conectar, por padrão já existem 3 bancos de dados:
+   - **admin** – Banco administrativo que armazena credenciais, roles e configurações de nível global.
+   - **config** – Usado pelo sharding para guardar metadados e informações de configuração dos shards.
+   - **local** – Guarda dados locais do nó, como informações de replicação; não é replicado entre servidores.
+2. Para criar um novo banco de dados, clique no botão **Create Database**.
+3. Será aberta uma tela solicitando:
+   - **Database Name**
+   - **Collection Name**  
 
-* O primeiro comando trocara o banco de dados mesmo que ainda não esteja criado
-* Respeitando a regra do banco sempre temos que criar uma collection junto com o banco por isso não adianta apenas trocar o banco, temos que passar o segundo comando também
+   > Por padrão, sempre deve ser criada **uma collection junto com o banco**.  
+   > *Em analogia a um banco relacional, uma collection seria uma tabela, mas não é exatamente a mesma coisa.*
+4. Clique em **Create Database** para finalizar.
 
-4. Sera retornado uma mensagem de __ok__
-5. Banco de dados criado
+---
 
-__O comando `use` também serve para alterar entre os bancos de dados já existentes__
+## 💻 Criando o banco via Shell
 
-_O mongo é case sensitive, ou seja, devemos digitar os comandos e bancos de forma correta_
+1. Abra o `CMD` e digite:  
+   <pre><code>mongosh</code></pre>  
+   para se **conectar ao banco de dados**.  
+
+   **Importante:** Ao conectar, o shell mostra:
+   - O caminho em que está se conectando
+   - A versão do MongoDB
+   - A versão do shell
+2. Para **exibir os bancos de dados existentes**, use:  
+   <pre><code>show databases</code></pre>
+3. Para **criar um novo banco de dados**, execute:
+   1. <pre><code>use {nome_do_banco}</code></pre>
+   2. <pre><code>db.createCollection("{nome_da_collection}")</code></pre>  
+
+   > O comando `use` muda o banco atual mesmo que ainda não exista.  
+   > Sempre devemos criar uma **collection junto com o banco** para que ele seja criado de fato.
+4. Será retornada uma mensagem com `ok`.
+5. Banco de dados criado com sucesso.
+
+> ⚠️ O comando `use` também serve para **alternar entre bancos já existentes**.  
+> 🔹 O MongoDB é **case sensitive**, portanto digite os nomes de bancos e comandos corretamente.
