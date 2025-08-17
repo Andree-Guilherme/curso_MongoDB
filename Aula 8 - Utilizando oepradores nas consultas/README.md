@@ -1,8 +1,10 @@
-# Utilizando oepradores nas consultas
+# Operadores de consulta e projeção (Seletores de query)
 
 (MATERIAL DE APOIO) [https://www.mongodb.com/pt-br/docs/manual/reference/operator/query/]
 
-### Operadores de consulta e projeção
+
+## Comparação
+
 
 ### $eq – Igualdade ( = )
 <pre><code>db.&lt;collection&gt;.find({
@@ -91,3 +93,45 @@
 >Objetivo: Encontra documentos em que o valor do campo não esteja dentro de uma lista de valores especificada
 
 ---
+
+## Lógica
+
+### $and – E lógico ( ∧ )
+<pre><code>db.&lt;collection&gt;.find({
+    $and: [
+        { "&lt;key1&gt;": &lt;value1&gt; },
+        { "&lt;key2&gt;": &lt;value2&gt; }
+    ]
+});
+</code></pre>
+
+> Objetivo: Retorna documentos que satisfaçam todas as condições especificadas
+
+### $not – Negação lógica ( ¬ )
+<pre><code>db.&lt;collection&gt;.find({
+    "&lt;key&gt;": {
+        $not: { &lt;comparison&gt;: &lt;value&gt; }
+    }
+});
+</code></pre>
+> Objetivo: Retorna documentos que não correspondam ao predicado especificado
+
+### $nor – NOR lógico ( ⊽ )
+<pre><code>db.&lt;collection&gt;.find({
+    $nor: [
+        { "&lt;key1&gt;": &lt;value1&gt; },
+        { "&lt;key2&gt;": &lt;value2&gt; }
+    ]
+});
+</code></pre>
+> Objetivo: Retorna documentos que não correspondam a nenhuma das condições fornecidas
+
+### $or – OU lógico ( ∨ )
+<pre><code>db.&lt;collection&gt;.find({
+    $or: [
+        { "&lt;key1&gt;": &lt;value1&gt; },
+        { "&lt;key2&gt;": &lt;value2&gt; }
+    ]
+});
+</code></pre>
+> Objetivo: Retorna documentos que satisfaçam pelo menos uma das condições
