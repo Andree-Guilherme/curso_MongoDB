@@ -1,61 +1,60 @@
-# Como Instalar o MongoDB
+# 📥 Como Instalar o MongoDB
 
-### Download MongoDB e Compass
-1. Acessamos o site [mongodb](https://www.mongodb.com/try/download/community)
-2. Em seguida achamos a parte de Download
-3. Selecionamos os seguintes campos:
-   1.  __Version__
-   2.  __Plataform__
-   3.  __Package__
-4.  Por fim clicamos em __Download__
-
----
-
-### Download MongoDB Shell
-1. Acessamos o site [mongosh](https://www.mongodb.com/try/download/shell)
-2. Selecionamos os seguintes campos:
-   1.  __Version__
-   2.  __Plataform__
-   3.  __Package__
-
-_Certifique-se de escolher a mesma versão da instalação gráfica para manter a compatibilidade_
-
-4.  Por fim clicamos em __Download__
+## 🔽 Download MongoDB e Compass
+1. Acesse o site [mongodb](https://www.mongodb.com/try/download/community)  
+2. Vá até a seção de **Download**  
+3. Selecione os seguintes campos:  
+   - **Version**  
+   - **Plataform**  
+   - **Package**  
+4. Clique em **Download**
 
 ---
 
-### Instalando o MongoDB
-1. Execute o instalador como administrador
-2. Clique em __Next__
-3. Aceite os termos do contrato
-- [X] __I accept the terms in the License Agreement__
-4. Escolha o tipo de instalação
-   1. **Completa** - _mais utilizada_
-   2. __Customizada__
-5. Escolher a instalação completa
-6. Sera aberto a tela de configuração do serviço - _deve ser usado as seguintes opções:_
-- [X] __Install MongoD as a Service__
-- [X] __Run service as Network Service user__
-* __Service Name: {nome_do_serviço}__
-* __Data Directory: {definir_diretorio_de_dados}__
-* __Log Directory: {definir_diretorio_de_log}__
-7. Clique em __Next__
-8. A próxima tela perguntará se deseja instalar a interface gráfica MongoDB Compass
-- [X] **Install MongoDB Compass** - _marque essa opção_
-9. Clique em __Next__
-10. Clique em __Install__ e aguarde o carregamento
-11. Clique em __Finish__ para concluir a instalação
+## 🔽 Download MongoDB Shell
+1. Acesse o site [mongosh](https://www.mongodb.com/try/download/shell)  
+2. Selecione os seguintes campos:  
+   - **Version**  
+   - **Plataform**  
+   - **Package**  
+3. Clique em **Download**  
 
-__Recomenda-se reiniciar o computador após o termino__
+⚠️ *Certifique-se de escolher a mesma versão da instalação gráfica para manter a compatibilidade*
 
 ---
 
-### Instalando Mongo Shell
-1. Execute o instalador como administrador
-2. Escolha o local de instalação
-3. Defina se deseja instalar apenas para o seu usuário
-- [X] **Install just for you** - _desmarque essa opção_
-4. Clique em __Install__ e aguarde o carregamento
-5. Clique em __Finish__ para concluir a instalação
+## ⚙️ Instalando o MongoDB
+1. Execute o instalador como **administrador**  
+2. Clique em **Next**  
+3. Aceite os termos do contrato:  
+   - [X] *I accept the terms in the License Agreement*  
+4. Escolha o tipo de instalação:  
+   - **Complete** – *mais utilizada*  
+   - **Custom**  
+5. Selecione a instalação **Complete**  
+6. Configure o serviço com as seguintes opções:  
+   - [X] *Install MongoD as a Service*  
+   - [X] *Run service as Network Service user*  
+   - **Service Name:** `{nome_do_serviço}`  
+   - **Data Directory:** `{definir_diretorio_de_dados}`  
+   - **Log Directory:** `{definir_diretorio_de_log}`  
+7. Clique em **Next**  
+8. Marque a opção para instalar a interface gráfica:  
+   - [X] *Install MongoDB Compass*  
+9. Clique em **Next**  
+10. Clique em **Install** e aguarde  
+11. Clique em **Finish** para concluir  
 
-__Recomenda-se reiniciar o computador após o termino__
+✅ *Recomenda-se reiniciar o computador após o término*
+
+---
+
+## ⚙️ Instalando o Mongo Shell
+1. Execute o instalador como **administrador**  
+2. Escolha o **local de instalação**  
+3. Defina se deseja instalar apenas para o seu usuário:  
+   - [X] *Install just for you* – *desmarque essa opção*  
+4. Clique em **Install** e aguarde  
+5. Clique em **Finish** para concluir  
+
+✅ *Recomenda-se reiniciar o computador após o término*
