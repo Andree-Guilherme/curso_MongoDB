@@ -1,6 +1,6 @@
 # Operadores de consulta e projeção (Seletores de query)
 
-(MATERIAL DE APOIO) [https://www.mongodb.com/pt-br/docs/manual/reference/operator/query/]
+[MATERIAL DE APOIO] (https://www.mongodb.com/pt-br/docs/manual/reference/operator/query/)
 
 
 ## Comparação

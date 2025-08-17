@@ -1,6 +1,6 @@
 # Inserindo dados em uma coleção via shell
 
-(MATERIAL DE APOIO: Tipos de JSON)[https://www.mongodb.com/pt-br/docs/manual/reference/bson-types]
+[MATERIAL DE APOIO: Tipos de JSON](https://www.mongodb.com/pt-br/docs/manual/reference/bson-types)
 
 ### Passo a passo
 
