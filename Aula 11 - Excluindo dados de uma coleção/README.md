@@ -1,35 +1,43 @@
-# 🗑️ Excluindo Documentos em uma Coleção via Shell
+# 🗑️ Excluindo Documentos de uma Coleção
+
+[MATERIAL DE APOIO: db.collection.deleteOne()](https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteOne/)
+[MATERIAL DE APOIO: db.collection.deleteMany()](https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteMany/)
 
 ---
 
-### 1️⃣ Excluindo um documento
+Este guia explica como remover documentos de uma coleção usando os comandos `deleteOne` and `deleteMany` no Mongo Shell.
 
-<pre><code>db.&lt;collection&gt;.deleteOne(
-   {"&lt;key&gt;": "&lt;value&gt;"}
-);
+## 🔹 Comandos de Exclusão
+
+### 1️⃣ deleteOne
+**Descrição:** Remove o **primeiro** documento que corresponde ao filtro especificado.
+
+**Uso:**
+1.  Especifique um **filtro** para localizar o documento que deseja remover.
+2.  O comando irá parar após remover o primeiro documento encontrado.
+3.  O resultado da operação mostrará `deletedCount: 1` se um documento for removido.
+
+**Exemplo:** Para remover o primeiro usuário com o status "INATIVO":
+<pre><code>db.users.deleteOne({ "status": "INATIVO" });
 </code></pre>
 
-**Passos:**
-1. Substitua `<collection>` pelo nome da collection.
-2. No filtro (`{"<key>": "<value>"}`), especifique o campo e valor que deseja localizar.
-3. O `deleteOne` remove **apenas o primeiro documento encontrado** que atenda ao critério.
-4. O MongoDB retorna a contagem de documentos removidos (`deletedCount: 1` ou `0`).
+### 2️⃣ deleteMany
+**Descrição:** Remove **todos** os documentos que correspondem ao filtro especificado.
 
----
+**Uso:**
+1.  Especifique um **filtro** para localizar os documentos que deseja remover.
+2.  Todos os documentos que atenderem ao critério serão removidos.
+3.  O resultado mostrará o número total de documentos removidos em `deletedCount`.
 
-### 2️⃣ Excluindo vários documentos
-
-<pre><code>db.&lt;collection&gt;.deleteMany(
-   {"&lt;key&gt;": "&lt;value&gt;"}
-);
+**Exemplo:** Para remover todos os produtos com quantidade em estoque igual a 0:
+<pre><code>db.products.deleteMany({ "estoque": 0 });
 </code></pre>
 
-**Passos:**
-1. Substitua `<collection>` pelo nome da collection.
-2. Defina o filtro para escolher **quais documentos** serão removidos.
-3. O `deleteMany` remove **todos os documentos** que correspondem ao critério.
-4. O MongoDB retorna a quantidade de documentos removidos (`deletedCount: X`).
-
 ---
 
-> ⚠️ **Atenção:** Se o filtro for `{}`, o comando remove **todos os documentos da collection**, mas a collection em si permanece vazia.
+> ⚠️ **Cuidado:** Usar `deleteMany` com um filtro vazio (`{}`) removerá **TODOS** os documentos da coleção. A coleção continuará a existir, mas ficará vazia. Use com extrema cautela!
+> <pre><code>// CUIDADO: ISSO APAGA TUDO DA COLEÇÃO 'logs'
+db.logs.deleteMany({});
+</code></pre>
+
+> 💡 **Excluindo via Compass:** Na interface gráfica, você pode passar o mouse sobre um documento e clicar no **ícone de lixeira (🗑️)** para removê-lo individualmente.
