@@ -1,57 +1,53 @@
-# 🗑️ Excluindo Bancos e Coleções
+# 🗑️ Excluindo Bancos de Dados e Coleções
+
+[MATERIAL DE APOIO: db.collection.drop()](https://www.mongodb.com/docs/manual/reference/method/db.collection.drop/)
+[MATERIAL DE APOIO: db.dropDatabase()](https://www.mongodb.com/docs/manual/reference/method/db.dropDatabase/)
 
 ---
 
-## 🔹 Excluindo uma collection
+Este guia mostra como excluir coleções e bancos de dados inteiros, tanto pela interface gráfica (Compass) quanto pela linha de comando (Shell).
 
-1. Existem duas maneiras de excluir uma collection:
-   1. Na **aba lateral esquerda**, localize a collection desejada dentro do banco e clique no símbolo de 🗑️.
-   2. Localize a **Database** dentro do **Server Group** na lateral esquerda e clique sobre ela. Na grid principal, serão exibidas todas as collections; clique no símbolo de 🗑️ à direita da collection desejada.
-2. Um **pop-up de confirmação** será exibido:  
-   > Type "{nome_da_collection}" to confirm your action
-3. Clique em **Drop Collection** para concluir.
+## 🔹 Método 1: Usando o MongoDB Compass (Interface Gráfica)
 
----
+### 1️⃣ Excluindo uma Coleção
+**Descrição:** Remove uma coleção específica de dentro de um banco de dados.
 
-## 🔹 Excluindo um banco de dados
+**Passos:**
+1.  No painel à esquerda, expanda o banco de dados para ver suas coleções.
+2.  Passe o mouse sobre a coleção que deseja remover e clique no **ícone de lixeira (🗑️)** que aparece.
+3.  Uma janela de confirmação surgirá. Digite o **nome da coleção** para confirmar.
+4.  Clique no botão **"Drop Collection"**.
 
-1. Existem duas maneiras de excluir um banco:
-   1. Na **aba lateral esquerda**, localize a Database desejada dentro do Server Group e clique no símbolo de 🗑️.
-   2. Clique no **Server Group** na aba lateral esquerda. Na grid principal, selecione a Database desejada e clique no símbolo de 🗑️ à direita.
-2. Um **pop-up de confirmação** será exibido:  
-   > Type "{nome_da_database}" to confirm your action
-3. Clique em **Drop Database** para concluir.
+### 2️⃣ Excluindo um Banco de Dados
+**Descrição:** Remove um banco de dados inteiro, incluindo todas as suas coleções.
 
----
-
-## 💻 Excluindo uma collection via Shell
-
-1. Abra o terminal.
-2. Acesse o **mongo shell** com:  
-   <pre><code>mongosh</code></pre>
-3. Para visualizar as coleções:  
-   <pre><code>show collections</code></pre>
-4. Para deletar uma coleção:  
-   <pre><code>db.{nome_da_colecao}.drop()</code></pre>
-5. Se o nome da coleção tiver espaços, use:  
-   <pre><code>db["nome da colecao"].drop()</code></pre>
-6. Após a exclusão, o comando retorna **true**.
-7. Digite `exit` para sair do shell.
+**Passos:**
+1.  No painel à esquerda, passe o mouse sobre o banco de dados que deseja remover e clique no **ícone de lixeira (🗑️)**.
+2.  Uma janela de confirmação surgirá. Digite o **nome do banco de dados** para confirmar.
+3.  Clique no botão **"Drop Database"**.
 
 ---
 
-## 💻 Excluindo um banco de dados via Shell
+## 🔹 Método 2: Usando o Mongo Shell (Linha de Comando)
 
-1. Abra o terminal.
-2. Acesse o **mongo shell** com:  
-   <pre><code>mongosh</code></pre>
-3. Entre no banco desejado:  
-   <pre><code>use {nome_do_banco}</code></pre>
-4. Execute o comando para excluir o banco:  
-   <pre><code>db.dropDatabase()</code></pre>
-5. Será retornado o **status: ok** e exibido que todas as collections foram removidas.
-6. Digite `exit` para sair do shell.
+### 1️⃣ Excluindo uma Coleção
+**Descrição:** Remove uma coleção do banco de dados que você está usando atualmente.
 
----
+**Passos:**
+1.  Primeiro, certifique-se de que está usando o banco de dados correto com o comando `use <nome_do_banco>`.
+2.  Para ver as coleções no banco atual, use `show collections`.
+3.  Execute o comando `drop()` na coleção desejada. O comando retornará `true` se for bem-sucedido.
+    <pre><code>db.nome_da_colecao.drop()</code></pre>
+> 💡 Se o nome da coleção contiver espaços ou caracteres especiais, use colchetes e aspas: `db["nome da colecao"].drop()`
 
-> ⚠️ Por regra, se um banco tiver todas as suas collections excluídas, ele também será removido, pois é necessário que exista **pelo menos uma collection** para que o banco seja mantido.
+### 2️⃣ Excluindo um Banco de Dados
+**Descrição:** Remove o banco de dados que você está usando atualmente.
+
+**Passos:**
+1.  **Importante:** Entre no banco de dados que você deseja excluir.
+    <pre><code>use nome_do_banco_a_ser_excluido</code></pre>
+2.  Execute o comando `dropDatabase()`.
+    <pre><code>db.dropDatabase()</code></pre>
+3.  O shell retornará uma mensagem de sucesso, confirmando a exclusão.
+
+> ⚠️ **Cuidado:** Excluir um banco de dados é uma ação irreversível e remove **todos** os dados e coleções contidos nele. Se um banco de dados ficar sem nenhuma coleção, o MongoDB o remove automaticamente.
