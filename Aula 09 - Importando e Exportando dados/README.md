@@ -1,24 +1,37 @@
-# 📦 Importar e Exportar Dados no MongoDB Compass
+# 📦 Importando e Exportando Dados (via Compass)
 
-## 📥 Importando dados
-1. Abra o **MongoDB Compass** e conecte-se ao seu banco
-2. No menu lateral, selecione a **database** e depois a **collection** onde deseja importar 
-3. Clique em **Collection → ADD DATA → Import JSON or CSV file** 
-4. Escolha o **arquivo a importar**:  
-   - Formatos aceitos: **JSON** ou **CSV**
-5. Configure as opções de importação
-   - Ative ou desative **Stop on Errors** - _se ativado, a importação para ao encontrar o primeiro erro_
-6. Clique em **IMPORT** e aguarde
-   - Os registros serão adicionados à collection selecionada
+[MATERIAL DE APOIO: Importar Dados no Compass](https://www.mongodb.com/docs/compass/current/import-export/#import-data-into-a-collection)
+[MATERIAL DE APOIO: Exportar Dados no Compass](https://www.mongodb.com/docs/compass/current/import-export/#export-data-from-a-collection)
 
 ---
 
-## 📤 Exportando dados
-1. Abra a **collection** que deseja exportar
-2. Clique em **Collection → Export Collection**
-3. Defina se deseja exportar:  
-   - **Todos os documentos**  
-   - **Apenas o resultado de uma query filtrada**  
-4. Escolha o **formato de exportação** (JSON ou CSV)
-5. Selecione o **local para salvar** e clique em **EXPORT**
-6. O arquivo será salvo no seu computador
+Este guia detalha como usar o MongoDB Compass para importar e exportar dados de suas coleções.
+
+## 📥 Importando Dados para uma Coleção
+
+**Descrição:** Adiciona múltiplos documentos a uma coleção a partir de um arquivo JSON ou CSV.
+
+**Passos:**
+1.  No painel à esquerda, selecione o **banco de dados** e a **coleção** de destino.
+2.  Com a coleção selecionada, clique no botão **"ADD DATA"** e escolha a opção **"Import JSON or CSV file"**.
+3.  Na janela de importação, selecione o arquivo do seu computador.
+4.  Configure as opções, se necessário (como o delimitador para CSV ou se a importação deve parar em caso de erro).
+5.  Clique em **"IMPORT"** e aguarde a conclusão. Os dados do arquivo serão adicionados à sua coleção.
+
+---
+
+## 📤 Exportando Dados de uma Coleção
+
+**Descrição:** Salva os documentos de uma coleção (ou de uma consulta) em um arquivo JSON ou CSV no seu computador.
+
+**Passos:**
+1.  Selecione a coleção que deseja exportar.
+2.  Clique no menu **"Collection"** na parte superior e escolha **"Export Collection"**.
+3.  Na janela de exportação, configure as opções:
+    *   **Export Full Collection:** Para exportar todos os documentos.
+    *   **Export Query Results:** Para exportar apenas o resultado de uma consulta específica (você deve inserir o filtro no campo `Filter`).
+4.  Escolha os campos que deseja exportar clicando em **"Select Fields"**.
+5.  Selecione o formato de saída (**JSON** ou **CSV**).
+6.  Clique em **"EXPORT"**, escolha o local para salvar o arquivo e confirme.
+
+> 💡 **Dica:** Exportar o resultado de uma query é muito útil para extrair apenas um subconjunto específico de dados da sua coleção para análise ou backup.
