@@ -1,58 +1,58 @@
 # 🗄️ Criando Meu Primeiro Banco de Dados
 
----
-
-## 🔌 Conectando ao banco
-
-1. Para criar um banco de dados, primeiro devemos nos conectar a ele clicando em **Add new connection**.
-2. Depois irá aparecer a tela de **New Connection** onde definiremos a **URI (String de Conexão)**.
-3. Deixe a URI padrão:  
-   <pre><code>mongodb://localhost:27017/</code></pre>
-4. Salvar as informações:
-   - **Save:** Salva as configurações ou dados atuais.
-   - **Connect:** Sempre será necessário clicar para conectar, mesmo após salvar.
-   - **Save & Connect:** Permite reconexão automática sem precisar clicar manualmente toda vez.
-5. Feito isso, já estamos conectados ao servidor local.
+[MATERIAL DE APOIO: Comando 'use'](https://www.mongodb.com/docs/manual/reference/command/use/)
 
 ---
 
-## 🏗️ Criando o banco de dados
+Este guia mostra duas maneiras de criar um banco de dados no MongoDB: através da interface gráfica (Compass) ou pela linha de comando (Mongo Shell).
 
-1. Ao se conectar, por padrão já existem 3 bancos de dados:
-   - **admin** – Banco administrativo que armazena credenciais, roles e configurações de nível global.
-   - **config** – Usado pelo sharding para guardar metadados e informações de configuração dos shards.
-   - **local** – Guarda dados locais do nó, como informações de replicação; não é replicado entre servidores.
-2. Para criar um novo banco de dados, clique no botão **Create Database**.
-3. Será aberta uma tela solicitando:
-   - **Database Name**
-   - **Collection Name**  
+## 🔹 Método 1: Usando o MongoDB Compass (Interface Gráfica)
 
-   > Por padrão, sempre deve ser criada **uma collection junto com o banco**.  
-   > *Em analogia a um banco relacional, uma collection seria uma tabela, mas não é exatamente a mesma coisa.*
-4. Clique em **Create Database** para finalizar.
+### 1️⃣ Conectar ao Servidor
+**Descrição:** Primeiro, estabeleça a conexão com o seu servidor MongoDB.
+
+**Passos:**
+1.  Na tela inicial do Compass, clique em **"Add new connection"**.
+2.  Mantenha a URI padrão para conexão local:
+    <pre><code>mongodb://localhost:27017/</code></pre>
+3.  Clique em **"Save & Connect"** para salvar a conexão e acessar o servidor.
+
+### 2️⃣ Criar o Banco de Dados e a Primeira Coleção
+**Descrição:** Crie o novo banco de dados e, obrigatoriamente, sua primeira coleção.
+
+**Passos:**
+1.  No painel à esquerda, clique no botão **"Create Database"**.
+2.  Na janela que surgir, preencha os dois campos:
+    *   **Database Name:** O nome do seu novo banco (ex: `loja`).
+    *   **Collection Name:** O nome da primeira coleção (ex: `produtos`).
+3.  Clique em **"Create Database"** para finalizar.
+
+> 💡 **Importante:** No MongoDB, um banco de dados só é fisicamente criado após a inserção do primeiro documento ou a criação da primeira coleção. Por isso, o Compass solicita ambos os nomes.
+
+> ℹ️ **Bancos Padrão:** Ao se conectar, você verá 3 bancos de dados já existentes: `admin` (credenciais e configurações globais), `config` (usado para sharding) e `local` (dados específicos do nó, não replicado).
 
 ---
 
-## 💻 Criando o banco via Shell
+## 🔹 Método 2: Usando o Mongo Shell (Linha de Comando)
 
-1. Abra o `CMD` e digite:  
-   <pre><code>mongosh</code></pre>  
-   para se **conectar ao banco de dados**.  
+### 1️⃣ Iniciar e Conectar
+**Descrição:** Abra o terminal e inicie o Mongo Shell.
 
-   **Importante:** Ao conectar, o shell mostra:
-   - O caminho em que está se conectando
-   - A versão do MongoDB
-   - A versão do shell
-2. Para **exibir os bancos de dados existentes**, use:  
-   <pre><code>show databases</code></pre>
-3. Para **criar um novo banco de dados**, execute:
-   1. <pre><code>use {nome_do_banco}</code></pre>
-   2. <pre><code>db.createCollection("{nome_da_collection}")</code></pre>  
+<pre><code>mongosh</code></pre>
 
-   > O comando `use` muda o banco atual mesmo que ainda não exista.  
-   > Sempre devemos criar uma **collection junto com o banco** para que ele seja criado de fato.
-4. Será retornada uma mensagem com `ok`.
-5. Banco de dados criado com sucesso.
+### 2️⃣ Listar Bancos Existentes (Opcional)
+**Descrição:** Use o comando `show databases` para ver todos os bancos de dados no servidor.
 
-> ⚠️ O comando `use` também serve para **alternar entre bancos já existentes**.  
-> 🔹 O MongoDB é **case sensitive**, portanto digite os nomes de bancos e comandos corretamente.
+<pre><code>show databases</code></pre>
+
+### 3️⃣ Criar o Novo Banco de Dados
+**Descrição:** Para criar um banco via shell, você primeiro seleciona o nome do banco com `use` e depois cria uma coleção dentro dele.
+
+**Passos:**
+1.  Digite `use <nome_do_banco>` para mudar para o seu novo banco de dados. Ele ainda não será criado.
+    <pre><code>use loja</code></pre>
+2.  Crie a primeira coleção para que o banco seja salvo.
+    <pre><code>db.createCollection("produtos")</code></pre>
+3.  O shell retornará `{ "ok" : 1 }`, confirmando que a operação foi bem-sucedida.
+
+> ⚠️ **Lembre-se:** O comando `use` também serve para **alternar** entre bancos de dados que já existem. O MongoDB é **case sensitive**, então `loja` e `Loja` são considerados bancos diferentes.
