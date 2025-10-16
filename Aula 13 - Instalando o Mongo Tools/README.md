@@ -1,41 +1,54 @@
-# 🛠️ Como Instalar o MongoDB Database Tools (via ZIP)
+# 🛠️ Instalando o MongoDB Database Tools
 
-## 🔽 Download MongoDB Tools
-
-1.  Acesse o site [MongoDB Tools](https://www.mongodb.com/try/download/database-tools)
-2.  Selecione os seguintes campos:
-    *   **Version**
-    *   **Platform**
-    *   **Package** → _ZIP_
-3.  Clique em **Download**
+[MATERIAL DE APOIO: MongoDB Database Tools](https://www.mongodb.com/try/download/database-tools)
 
 ---
 
-## 📂 Criando a Pasta `tools`
+Este guia explica como instalar as Ferramentas de Banco de Dados do MongoDB (que incluem `mongodump`, `mongorestore`, etc.) em um ambiente Windows.
 
-1.  Acesse o diretório onde o **MongoDB** foi instalado (exemplo: `C:\Program Files\MongoDB\Server\X.X\`)
-2.  Crie uma nova pasta chamada **tools**
-3.  Extraia os arquivos baixados do **ZIP**
-4.  Copie todo o conteúdo extraído para dentro da pasta **tools** criada
+> 💡 **O que são as Database Tools?** São um conjunto de utilitários de linha de comando para trabalhar com o MongoDB, essenciais para backups (`mongodump`), restaurações (`mongorestore`), importação/exportação (`mongoimport`/`mongoexport`), e mais.
 
----
+## 🔽 Passo 1: Download do Pacote
 
-## ⚙️ Configurando Variáveis de Ambiente
-
-1.  Pressione as teclas **Win + R**
-2.  Digite `sysdm.cpl` e pressione **Enter**
-3.  Na janela aberta, vá até a aba **Avançado**
-4.  Clique em **Variáveis de Ambiente**
-5.  Em **Variáveis do sistema**, localize a variável **Path**
-6.  Clique em **Editar**
-7.  Clique em **Novo** e cole o caminho da pasta **tools** criada:
-    *   Exemplo: `C:\Program Files\MongoDB\tools`
-8.  Clique em **OK** em todas as janelas para salvar
+**Ações:**
+1.  Acesse a página de download do [MongoDB Database Tools](https://www.mongodb.com/try/download/database-tools).
+2.  Selecione a **versão** (geralmente a mais recente), a **plataforma** (Windows) e o **pacote** (Package) como **ZIP**.
+3.  Clique em **Download**.
 
 ---
 
-## ✅ Testando a Instalação
+## 📂 Passo 2: Extração dos Arquivos
 
-1.  Reinicie o PC
-2.  Abra o **Prompt de Comando** (CMD) ou **PowerShell**
-3.  Digite: `mongodump --version`
+**Descrição:** Os arquivos baixados precisam ser colocados em um local acessível. Uma boa prática é colocá-los junto à instalação principal do MongoDB.
+
+**Ações:**
+1.  Navegue até a pasta de instalação do MongoDB Server. O caminho padrão é `C:\ Program Files\MongoDB\Server\<sua_versao>\`.
+2.  Dentro da pasta da sua versão, crie um novo diretório chamado `tools`.
+3.  Extraia o conteúdo do arquivo `.zip` que você baixou.
+4.  Copie todos os arquivos da pasta `bin` (de dentro do ZIP) para a nova pasta `C:\ Program Files\MongoDB\Server\<sua_versao>\tools`.
+
+---
+
+## ⚙️ Passo 3: Configuração das Variáveis de Ambiente
+
+**Descrição:** Adicionar a nova pasta `tools` ao "Path" do Windows permite que você execute os comandos (`mongodump`, etc.) de qualquer lugar no terminal.
+
+**Ações:**
+1.  Pressione **Win + R**, digite `sysdm.cpl` e pressione **Enter**.
+2.  Vá para a aba **"Avançado"** e clique em **"Variáveis de Ambiente"**.
+3.  Na seção **"Variáveis do sistema"**, encontre e selecione a variável **"Path"** e clique em **"Editar"**.
+4.  Clique em **"Novo"** e adicione o caminho completo para a sua pasta `tools`.
+    *   **Exemplo:** `C:\ Program Files\MongoDB\Server\6.0\tools`
+5.  Clique em **"OK"** em todas as janelas para salvar as alterações.
+
+---
+
+## ✅ Passo 4: Verificação da Instalação
+
+**Descrição:** Verifique se o Windows reconhece os novos comandos.
+
+**Ações:**
+1.  **Reinicie o computador** ou, no mínimo, feche e reabra qualquer terminal (CMD, PowerShell) que estiver aberto.
+2.  Abra um novo terminal e digite o seguinte comando:
+    <pre><code>mongodump --version</code></pre>
+3.  Se a instalação foi bem-sucedida, você verá a versão do `mongodump` e outras informações.
