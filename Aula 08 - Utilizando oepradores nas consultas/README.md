@@ -1,158 +1,84 @@
-# 📌 MongoDB Query Operators Step-by-Step
+# ⚙️ Utilizando Operadores nas Consultas
 
-[MATERIAL DE APOIO](https://www.mongodb.com/pt-br/docs/manual/reference/operator/query/)
-
----
-
-## 🔹 Comparação
-
-### 1️⃣ $eq – Igualdade ( = )
-
-<pre><code>db.&lt;collection&gt;.find({
-    "&lt;key&gt;": {
-        $eq: &lt;value&gt;
-    }
-});</code></pre>
-
-**Objetivo:** Encontrar documentos em que o valor de um campo seja exatamente igual ao valor especificado.
+[MATERIAL DE APOIO: Operadores de Consulta (Query Operators)](https://www.mongodb.com/pt-br/docs/manual/reference/operator/query/)
 
 ---
 
-### 2️⃣ $gt – Maior que ( > )
+Operadores de consulta estendem a funcionalidade das buscas no MongoDB, permitindo criar filtros complexos e poderosos. Eles são sempre prefixados com o símbolo `$`.
 
-<pre><code>db.&lt;collection&gt;.find({
-    "&lt;key&gt;": {
-        $gt: &lt;value&gt;
-    }
-});</code></pre>
+## 🔹 Operadores de Comparação
 
-**Objetivo:** Encontra documentos em que o valor do campo seja maior que o valor especificado.
+### 1️⃣ $eq (Equal)
+**Descrição:** Encontra documentos onde o valor de um campo é **igual** ao valor especificado.
+<pre><code>db.inventory.find({ "qty": { $eq: 20 } })</code></pre>
 
----
+### 2️⃣ $gt (Greater Than)
+**Descrição:** Encontra documentos onde o valor do campo é **maior que** o valor especificado.
+<pre><code>db.inventory.find({ "qty": { $gt: 20 } })</code></pre>
 
-### 3️⃣ $gte – Maior ou igual a ( ≥ )
+### 3️⃣ $gte (Greater Than or Equal)
+**Descrição:** Encontra documentos onde o valor do campo é **maior ou igual a** o valor especificado.
+<pre><code>db.inventory.find({ "qty": { $gte: 20 } })</code></pre>
 
-<pre><code>db.&lt;collection&gt;.find({
-    "&lt;key&gt;": {
-        $gte: &lt;value&gt;
-    }
-});</code></pre>
+### 4️⃣ $lt (Less Than)
+**Descrição:** Encontra documentos onde o valor do campo é **menor que** o valor especificado.
+<pre><code>db.inventory.find({ "qty": { $lt: 20 } })</code></pre>
 
-**Objetivo:** Encontra documentos em que o valor do campo seja maior ou igual ao valor especificado.
+### 5️⃣ $lte (Less Than or Equal)
+**Descrição:** Encontra documentos onde o valor do campo é **menor ou igual a** o valor especificado.
+<pre><code>db.inventory.find({ "qty": { $lte: 20 } })</code></pre>
 
----
+### 6️⃣ $ne (Not Equal)
+**Descrição:** Encontra documentos onde o valor do campo é **diferente** do valor especificado.
+<pre><code>db.inventory.find({ "qty": { $ne: 20 } })</code></pre>
 
-### 4️⃣ $in – Contido em ( ∈ )
+### 7️⃣ $in (In)
+**Descrição:** Encontra documentos onde o valor do campo **corresponde a qualquer valor** em um array especificado.
+<pre><code>// Encontra documentos onde o status é "A" ou "D"
+db.inventory.find({ "status": { $in: [ "A", "D" ] } })</code></pre>
 
-<pre><code>db.&lt;collection&gt;.find({
-    "&lt;key&gt;": {
-        $in: [&lt;value1&gt;, &lt;value2&gt;, ...]
-    }
-});</code></pre>
-
-**Objetivo:** Encontra documentos em que o valor do campo esteja dentro de uma lista de valores especificada.
-
----
-
-### 5️⃣ $lt – Menor que ( < )
-
-<pre><code>db.&lt;collection&gt;.find({
-    "&lt;key&gt;": {
-        $lt: &lt;value&gt;
-    }
-});</code></pre>
-
-**Objetivo:** Encontra documentos em que o valor do campo seja menor que o valor especificado.
+### 8️⃣ $nin (Not In)
+**Descrição:** Encontra documentos onde o valor do campo **não corresponde a nenhum valor** em um array especificado.
+<pre><code>// Encontra documentos onde o status não é "A" nem "D"
+db.inventory.find({ "status": { $nin: [ "A", "D" ] } })</code></pre>
 
 ---
 
-### 6️⃣ $lte – Menor ou igual a ( ≤ )
+## 🔹 Operadores Lógicos
 
-<pre><code>db.&lt;collection&gt;.find({
-    "&lt;key&gt;": {
-        $lte: &lt;value&gt;
-    }
-});</code></pre>
-
-**Objetivo:** Encontra documentos em que o valor do campo seja menor ou igual ao valor especificado.
-
----
-
-### 7️⃣ $ne – Diferente de ( ≠ )
-
-<pre><code>db.&lt;collection&gt;.find({
-    "&lt;key&gt;": {
-        $ne: &lt;value&gt;
-    }
-});</code></pre>
-
-**Objetivo:** Encontra documentos em que o valor do campo seja diferente do valor especificado.
-
----
-
-### 8️⃣ $nin – Não contido em ( ∉ )
-
-<pre><code>db.&lt;collection&gt;.find({
-    "&lt;key&gt;": {
-        $nin: [&lt;value1&gt;, &lt;value2&gt;, ...]
-    }
-});</code></pre>
-
-**Objetivo:** Encontra documentos em que o valor do campo não esteja dentro de uma lista de valores especificada.
-
----
-
-## 🔹 Lógica
-
-### 1️⃣ $and – E lógico ( ∧ )
-
-<pre><code>db.&lt;collection&gt;.find({
+### 1️⃣ $and (E)
+**Descrição:** Retorna documentos que satisfazem **todas** as condições em um array de expressões.
+<pre><code>db.inventory.find({
     $and: [
-        { "&lt;key1&gt;": &lt;value1&gt; },
-        { "&lt;key2&gt;": &lt;value2&gt; }
+        { "price": { $ne: 1.99 } },
+        { "qty": { $lt: 20 } }
     ]
-});
+})
 </code></pre>
+> 💡 **AND Implícito:** Para a maioria das consultas, você pode especificar um `AND` implicitamente separando as condições com vírgula no documento de filtro: `db.inventory.find({ "price": { $ne: 1.99 }, "qty": { $lt: 20 } })`
 
-**Objetivo:** Retorna documentos que satisfaçam **todas as condições** especificadas.
-
----
-
-### 2️⃣ $not – Negação lógica ( ¬ )
-
-<pre><code>db.&lt;collection&gt;.find({
-    "&lt;key&gt;": {
-        $not: { &lt;comparison&gt;: &lt;value&gt; }
-    }
-});
-</code></pre>
-
-**Objetivo:** Retorna documentos que **não correspondam** ao predicado especificado.
-
----
-
-### 3️⃣ $nor – NOR lógico ( ⊽ )
-
-<pre><code>db.&lt;collection&gt;.find({
-    $nor: [
-        { "&lt;key1&gt;": &lt;value1&gt; },
-        { "&lt;key2&gt;": &lt;value2&gt; }
-    ]
-});
-</code></pre>
-
-**Objetivo:** Retorna documentos que **não correspondam a nenhuma** das condições fornecidas.
-
----
-
-### 4️⃣ $or – OU lógico ( ∨ )
-
-<pre><code>db.&lt;collection&gt;.find({
+### 2️⃣ $or (OU)
+**Descrição:** Retorna documentos que satisfazem **pelo menos uma** das condições em um array de expressões.
+<pre><code>db.inventory.find({
     $or: [
-        { "&lt;key1&gt;": &lt;value1&gt; },
-        { "&lt;key2&gt;": &lt;value2&gt; }
+        { "qty": { $lt: 20 } },
+        { "price": 10 }
     ]
-});
+})
 </code></pre>
 
-**Objetivo:** Retorna documentos que satisfaçam **pelo menos uma das condições**.
+### 3️⃣ $nor (NÃO OU)
+**Descrição:** Retorna documentos que **falham em todas** as condições em um array de expressões.
+<pre><code>db.inventory.find({
+    $nor: [
+        { "price": 1.99 },
+        { "qty": { $lt: 20 } }
+    ]
+})
+</code></pre>
+
+### 4️⃣ $not (NÃO)
+**Descrição:** Inverte o efeito de uma expressão de consulta, retornando documentos que **não correspondem** à condição.
+<pre><code>// Encontra documentos onde a quantidade NÃO é maior que 50
+db.inventory.find({ "qty": { $not: { $gt: 50 } } })
+</code></pre>
