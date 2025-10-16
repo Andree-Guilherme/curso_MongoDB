@@ -1,125 +1,110 @@
-# 📌 MongoDB Update Operations Step-by-Step
+# 🔄 Alterando Dados em uma Coleção
 
-### 1️⃣ updateOne – Atualiza apenas o primeiro registro encontrado
+[MATERIAL DE APOIO: Métodos de Atualização do MongoDB](https://www.mongodb.com/docs/manual/reference/update-methods/)
+
+---
+
+## 🔹 Métodos de Atualização
+
+### 1️⃣ updateOne – Atualiza um único documento
+
+**Descrição:** Encontra o **primeiro** documento que corresponde ao filtro e atualiza seus dados.
 
 <pre><code>db.&lt;collection&gt;.updateOne(
-    { "&lt;key&gt;": &lt;value&gt; },
+    { "&lt;key&gt;": &lt;value&gt; }, // Filtro para encontrar o documento
     { 
         $set: { 
-            "&lt;key&gt;": &lt;newValue&gt; 
+            "&lt;key&gt;": &lt;newValue&gt; // Operador de atualização
         } 
     }
 )</code></pre>
 
 **Passos:**
-1. Defina a **collection** que deseja atualizar.
-2. No primeiro parâmetro, especifique o **filtro** `{ "<key>": <value> }` para localizar o registro
-3. No segundo parâmetro, use `$set` para definir o novo valor da chave
-4. Apenas o **primeiro registro** que corresponder ao filtro será atualizado
+1.  No primeiro objeto, defina o **filtro** para localizar o documento.
+2.  No segundo objeto, use o operador `$set` para definir o(s) campo(s) e seu(s) novo(s) valore(s).
+3.  Apenas o **primeiro documento** que corresponder ao filtro será atualizado.
 
 ---
 
-### 2️⃣ updateOne – Atualizando múltiplos campos do primeiro registro
+### 2️⃣ updateMany – Atualiza múltiplos documentos
 
-<pre><code>db.&lt;collection&gt;.updateOne(
-    { "&lt;key&gt;": &lt;value&gt; },
-    { 
-        $set: { 
-            "&lt;key1&gt;": &lt;newValue1&gt;,
-            "&lt;key2&gt;": &lt;newValue2&gt;
-        } 
-    }
-)</code></pre>
-
-**Passos:**
-1. Escolha a **collection**.
-2. Especifique o **filtro** no primeiro parâmetro
-3. No `$set`, defina **vários campos** a serem atualizados
-4. Apenas o **primeiro documento correspondente** será alterado
-
----
-
-### 3️⃣ updateMany – Atualiza todos os registros que correspondem ao filtro
+**Descrição:** Encontra **todos** os documentos que correspondem ao filtro e atualiza seus dados.
 
 <pre><code>db.&lt;collection&gt;.updateMany(
-    { "&lt;key&gt;": &lt;value&gt; },
+    { "&lt;key&gt;": &lt;value&gt; }, // Filtro para encontrar os documentos
     { 
         $set: { 
-            "&lt;key1&gt;": &lt;newValue1&gt;,
-            "&lt;key2&gt;": &lt;newValue2&gt;
+            "&lt;key&gt;": &lt;newValue&gt;
         } 
     }
 )</code></pre>
 
 **Passos:**
-1. Selecione a **collection**.
-2. Defina o **filtro** `{ "<key>": <value> }` para escolher os documentos
-3. No `$set`, inclua todos os campos que deseja atualizar
-4. Todos os **documentos correspondentes** ao filtro serão atualizados
+1.  Defina o **filtro** para localizar todos os documentos desejados.
+2.  Use `$set` para definir os campos a serem atualizados.
+3.  **Todos os documentos** que corresponderem ao filtro serão atualizados.
 
 ---
 
-### 4️⃣ updateMany – Adicionando um novo campo a todos os registros
+### 3️⃣ updateMany – Adicionando um novo campo a todos os documentos
+
+**Descrição:** Utiliza um filtro vazio para selecionar todos os documentos da coleção e adicionar um novo campo a eles.
 
 <pre><code>db.&lt;collection&gt;.updateMany(
-    {},
+    {}, // Filtro vazio para selecionar todos
     { 
         $set: { 
-            "fieldName": fieldValue 
+            "novoCampo": "valor" 
         } 
     }
 )</code></pre>
 
 **Passos:**
-1. Selecione a **collection**.
-2. Use `{}` como filtro para selecionar **todos os documentos**
-3. No `$set`, defina o **novo campo** e o valor que será adicionado
-4. Todos os documentos da collection receberão o **novo campo**
+1.  Use um filtro vazio `{}` para selecionar **todos os documentos**.
+2.  No `$set`, defina o **novo campo** e o valor que será adicionado.
+3.  O novo campo será adicionado a **todos os documentos** da coleção.
 
 ---
 
-### 5️⃣ updateOne usando ObjectId – Atualizando um registro específico
+### 4️⃣ updateOne com ObjectId – Atualizando um registro específico
 
-<pre><code>var id = ObjectId('&lt;idregistro&gt;');
+**Descrição:** A forma mais segura de atualizar um único documento, usando seu `_id` único.
 
+<pre><code>// 1. Guarde o ObjectId em uma variável
+var idParaAtualizar = ObjectId('&lt;id_do_documento&gt;');
+
+// 2. Use a variável no filtro do updateOne
 db.&lt;collection&gt;.updateOne(
-    {"_id": id},
+    { "_id": idParaAtualizar },
     {
-        $set: {
-            "&lt;key&gt;": "&lt;value&gt;"
-        }
+        $set: { "&lt;key&gt;": "&lt;novo_valor&gt;" }
     }
 );
 
-db.&lt;collection&gt;.find(
-    {"_id": id}
-);</code></pre>
+// 3. (Opcional) Verifique a alteração
+db.&lt;collection&gt;.find({ "_id": idParaAtualizar });
+</code></pre>
 
 **Passos:**
-1. Crie uma variável `id` usando `ObjectId('<idregistro>')`
-2. Selecione a **collection**
-3. Use `updateOne` com o filtro `{"_id": id}`
-4. No `$set`, defina o campo e o valor que deseja atualizar
-5. Use `find({"_id": id})` para **verificar o registro atualizado**
+1.  Crie uma variável para armazenar o `ObjectId` do documento.
+2.  Use esta variável no filtro `{ "_id": variavel }` para garantir a seleção do documento exato.
+3.  Defina as alterações com `$set`.
 
 ---
 
-## 📝 Variáveis no contexto do Mongo Shell
+## 📝 Gerenciando Variáveis no Mongo Shell
 
-> Variáveis criadas com `var`, `let` ou `const` não são apagáveis pois são **não configuráveis** no contexto global.
+O Mongo Shell permite o uso de variáveis para facilitar as operações.
 
-1. Listar todas variáveis no contexto global do shell:
-   <pre><code>Object.keys(this)</code></pre>
-2. Mostrar o tipo de variável:
-   <pre><code>typeof &lt;var&gt;</code></pre>
-3. Ver o valor da variável:
-   <pre><code>&lt;var&gt;</code></pre>
-4. Para apagar de forma “suja” a variável:
-   <pre><code>&lt;var&gt; = undefined;</code></pre>
+### Variáveis Declaradas (`var`, `let`, `const`)
+> Estas variáveis são parte do escopo do shell e não podem ser removidas com `delete`.
 
-> Variáveis criadas sem declaração podem ser apagáveis.
+*   **Listar variáveis:** `Object.keys(this)`
+*   **Verificar tipo:** `typeof nomeDaVariavel`
+*   **Limpar valor:** `nomeDaVariavel = undefined;` (atribui o valor `undefined` à variável, mas não a remove)
 
-1. Criar variável sem declaração:
-   <pre><code>&lt;var&gt; = &lt;value&gt;</code></pre>
-2. Apagar variável:
-   <pre><code>delete this.<var>;</code></pre>
+### Variáveis Globais (sem `var`, `let` ou `const`)
+> Variáveis criadas por atribuição direta (`nome = valor`) podem ser removidas.
+
+*   **Criar variável global:** `minhaVariavel = "teste"`
+*   **Remover variável:** `delete this.minhaVariavel`
