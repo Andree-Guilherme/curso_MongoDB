@@ -1,60 +1,57 @@
 # 📥 Como Instalar o MongoDB
 
-## 🔽 Download MongoDB e Compass
-1. Acesse o site [mongodb](https://www.mongodb.com/try/download/community)  
-2. Vá até a seção de **Download**  
-3. Selecione os seguintes campos:  
-   - **Version**  
-   - **Plataform**  
-   - **Package**  
-4. Clique em **Download**
+[MATERIAL DE APOIO: MongoDB Community Server](https://www.mongodb.com/try/download/community)
+[MATERIAL DE APOIO: MongoDB Shell (mongosh)](https://www.mongodb.com/try/download/shell)
 
 ---
 
-## 🔽 Download MongoDB Shell
-1. Acesse o site [mongosh](https://www.mongodb.com/try/download/shell)  
-2. Selecione os seguintes campos:  
-   - **Version**  
-   - **Plataform**  
-   - **Package**  
-3. Clique em **Download**  
+## 🔽 Passo 1: Download dos Pacotes
 
-⚠️ *Certifique-se de escolher a mesma versão da instalação gráfica para manter a compatibilidade*
+### 1️⃣ MongoDB Community Server
+**Descrição:** Baixe o instalador principal do MongoDB, que inclui o banco de dados e a interface gráfica Compass.
 
----
+**Ações:**
+1.  Acesse o site do [MongoDB Community Server](https://www.mongodb.com/try/download/community).
+2.  Selecione a **versão**, **plataforma** (geralmente Windows) e **pacote** (MSI).
+3.  Clique em **Download**.
 
-## ⚙️ Instalando o MongoDB
-1. Execute o instalador como **administrador**  
-2. Clique em **Next**  
-3. Aceite os termos do contrato:  
-   - [X] *I accept the terms in the License Agreement*  
-4. Escolha o tipo de instalação:  
-   - **Complete** – *mais utilizada*  
-   - **Custom**  
-5. Selecione a instalação **Complete**  
-6. Configure o serviço com as seguintes opções:  
-   - [X] *Install MongoD as a Service*  
-   - [X] *Run service as Network Service user*  
-   - **Service Name:** `{nome_do_serviço}`  
-   - **Data Directory:** `{definir_diretorio_de_dados}`  
-   - **Log Directory:** `{definir_diretorio_de_log}`  
-7. Clique em **Next**  
-8. Marque a opção para instalar a interface gráfica:  
-   - [X] *Install MongoDB Compass*  
-9. Clique em **Next**  
-10. Clique em **Install** e aguarde  
-11. Clique em **Finish** para concluir  
+### 2️⃣ MongoDB Shell (mongosh)
+**Descrição:** Baixe o shell (linha de comando) para interagir com o banco de dados.
 
-✅ *Recomenda-se reiniciar o computador após o término*
+**Ações:**
+1.  Acesse o site do [MongoDB Shell](https://www.mongodb.com/try/download/shell).
+2.  Escolha as mesmas opções de **versão** e **plataforma** do passo anterior.
+3.  Clique em **Download**.
+
+> ⚠️ **Atenção:** É importante que a versão do `mongosh` seja compatível com a versão do MongoDB Server para evitar problemas.
 
 ---
 
-## ⚙️ Instalando o Mongo Shell
-1. Execute o instalador como **administrador**  
-2. Escolha o **local de instalação**  
-3. Defina se deseja instalar apenas para o seu usuário:  
-   - [X] *Install just for you* – *desmarque essa opção*  
-4. Clique em **Install** e aguarde  
-5. Clique em **Finish** para concluir  
+## ⚙️ Passo 2: Instalação e Configuração
 
-✅ *Recomenda-se reiniciar o computador após o término*
+### 1️⃣ Instalando o MongoDB Server
+**Descrição:** Siga o assistente de instalação para configurar o MongoDB como um serviço no Windows.
+
+**Passos:**
+1.  Execute o instalador `.msi` do **MongoDB Server** como administrador.
+2.  Clique em **Next** e **aceite os termos** da licença.
+3.  Escolha o tipo de instalação **"Complete"** (Completa).
+4.  Na tela de configuração de serviço, mantenha as opções padrão marcadas:
+    *   `Install MongoD as a Service` (Instalar como serviço).
+    *   `Run service as Network Service user`.
+5.  Anote ou altere os diretórios de **Dados (Data)** e **Logs**.
+6.  Clique em **Next**.
+7.  **Marque a opção** para `Install MongoDB Compass` (a interface gráfica).
+8.  Clique em **Next**, depois em **Install** e aguarde a conclusão.
+9.  Finalize clicando em **Finish**.
+
+### 2️⃣ Instalando o Mongo Shell
+**Descrição:** Instale a ferramenta de linha de comando.
+
+**Passos:**
+1.  Execute o instalador `.msi` do **Mongo Shell** como administrador.
+2.  Na tela de seleção, **desmarque** a opção `Install just for you` para que o `mongosh` fique disponível para todos os usuários do sistema e seja adicionado ao PATH do Windows.
+3.  Clique em **Install** e aguarde.
+4.  Finalize clicando em **Finish**.
+
+> ✅ **Recomendação:** Após concluir as duas instalações, reinicie o computador para garantir que todas as variáveis de ambiente sejam carregadas corretamente.
