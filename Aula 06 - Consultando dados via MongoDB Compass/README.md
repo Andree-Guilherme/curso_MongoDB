@@ -1,62 +1,58 @@
-# Consultando dados via MongoDB Compass
+# 🔎 Consultando Dados com MongoDB Compass
 
-### Como fazer uma busca
-1. Acessar o MongoDB Compass
-2. Localizar a Query Bar
-   1. Por pardrão já sera apresentando o __{ }__
-3. Dentro do campo de busca podemos buscar por uma chave e valor
-   1. `{<"key">: <value>}`
-
-* Caso o filtro esteja errado o botão __Find__ não sera habilitado
+[MATERIAL DE APOIO: Filtrando Documentos no Compass](https://www.mongodb.com/docs/compass/current/query/filter/)
 
 ---
 
-### Filtro Project
-1. Acessar o MongoDB Compass
-2. Localizar o filtro __Project__
-   1. Por pardrão já sera apresentando o __{ }__
-3. Dentro do campo de busca podemos filtrar apenas as chaves e valores desejados
-    1. `{<key>: 1}` || `{<key>: 0}`
+Este guia explica como usar a barra de consulta e as opções de filtro no MongoDB Compass para encontrar e organizar seus dados.
 
-* Se o value estiver = 1 o resultado será exibido
-* Se o value estiver = 0 o resultado será ocultado
+## 🔹 A Barra de Consulta (Query Bar)
+
+A barra de consulta, localizada no topo da visualização de uma coleção, é a principal ferramenta para buscar documentos. Ela é composta por várias partes.
+
+### 1️⃣ Filter (Filtro)
+**Descrição:** É o campo principal onde você define as condições para encontrar documentos.
+
+**Uso:**
+*   Para encontrar todos os documentos, deixe o filtro vazio: `{}`.
+*   Para encontrar documentos que correspondem a uma condição, especifique um campo e um valor.
+
+**Exemplo:** Para achar todos os usuários com o nome "André":
+<pre><code>{ "nome": "André" }</code></pre>
+
+> 💡 Se a sintaxe do filtro estiver incorreta, o botão **"Find"** ficará desabilitado.
+
+### 2️⃣ Project (Projeção)
+**Descrição:** Define quais campos (colunas) devem ser incluídos ou excluídos dos resultados.
+
+**Uso:**
+*   `1`: Inclui o campo no resultado.
+*   `0`: Exclui o campo do resultado.
+
+**Exemplo:** Para mostrar apenas o campo `nome` e `email`, e excluir o `_id`:
+<pre><code>{ "_id": 0, "nome": 1, "email": 1 }</code></pre>
+
+### 3️⃣ Sort (Ordenação)
+**Descrição:** Ordena os documentos retornados com base em um ou mais campos.
+
+**Uso:**
+*   `1`: Ordena em ordem ascendente (A-Z, 0-9).
+*   `-1`: Ordena em ordem descendente (Z-A, 9-0).
+
+**Exemplo:** Para ordenar os usuários por nome, em ordem alfabética:
+<pre><code>{ "nome": 1 }</code></pre>
+
+### 4️⃣ Outras Opções (Options)
+Clicando em **"Options"**, você tem acesso a mais filtros:
+
+*   **Collation:** Permite buscas que ignoram maiúsculas/minúsculas ou acentos.
+    *   **Exemplo:** `{ "locale": "pt", "strength": 2 }` (Busca em português, ignorando acentos e capitalização).
+*   **Skip:** Pula um número de documentos no resultado. Útil para paginação.
+    *   **Exemplo:** `{ "skip": 10 }` (Pula os 10 primeiros resultados).
+*   **Limit:** Limita o número de documentos retornados pela busca.
+    *   **Exemplo:** `{ "limit": 5 }` (Mostra no máximo 5 documentos).
+*   **Max Time MS:** Define um tempo máximo (em milissegundos) para a execução da consulta.
 
 ---
 
-### Filtro Sort
-1. Acessar o MongoDB Compass
-2. Localizar o filtro __Sort__
-   1. Por pardrão já sera apresentando o __{ }__
-3. Dentro do campo de busca podemos filtrar apenas as chaves e valores desejados
-    1. `{<key>: 1}` || `{<key>: -1}`
-
-* Se o value estiver = 1 sera ordenado de A à Z (ascendente)
-* Se o value estiver = 0 sera ordenado de Z a A (descendente)
-
-### Filtro Collation
-1. Acessar o MongoDB Compass
-2. Localizar o filtro __Collation__
-   1. Por pardrão já sera apresentando o __{ }__
-3. Dentro do campo de busca podemos filtrar por 2 parametros
-   1. `locale: <idioma>` - _verifica a localidade_
-   2. `strength: 2` - _desconsidera caracteres especiais e letras maiusculas e minusculas_
-
----
-
-### Filtro Index Hint
-1. Acessar o MongoDB Compass
-2. Localizar o filtro __Index Hint__
-   1. Por pardrão já sera apresentando o __{ }__
-3. Dentro do campos de busca podemos dar ênfase a um parâmetro da Query Bar
-   1. `{<key>: 1}` || `{<key1>: 1, <key2>: 1}`
-
----
-
-### Filtros adicionais
-__Max Time MS__ : Tempo limite para execução de uma busca, caso passe do tempo não será executada
-__Skip__ : Desconsidera o valor a ser digitado e pula para o proximo
-__Limit__ : Limita a busca no limite desejado
-
----
-
-__Tell us what to find__ : Campo de busca inteligente onde podemos digitar o que queremos achar e será convertido para Query
+> 💡 **Busca Inteligente:** O campo **"Tell us what to find"** permite que você escreva o que quer em linguagem natural, e o Compass tentará converter sua frase em um filtro JSON válido.
